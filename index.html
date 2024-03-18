@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizBeth</title>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+    
+    <div class="container">
+        
+        <div class="start-container">
+            <button class="start button">Start Quiz</button>
+        </div>
+        <div class="questions-container hide">
+            <span class="question"></span>
+            <div class="answers-container"></div>
+        </div>
+        <div class="results-container hide">
+            <div class="message"></div>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            {
+                question: "1 - Traduza : CAR",
+                answers: [
+                    { text: "Carro", correct: true },
+                    { text: "House", correct: false },
+                    { text: "Dog", correct: false },
+                    { text: "Table", correct: false },
+                ],
+            },
+            {
+                question: "2 - Qual é a tradução de 'Please' em português?",
+                answers: [
+                    { text: "Oi", correct: false },
+                    { text: "Tchau", correct: false },
+                    { text: "Por favor", correct: true },
+                    { text: "Obrigado", correct: false },
+                ],
+            },
+            {
+                question: "3 - Qual é a tradução de 'I am learning English' em português?",
+                answers: [
+                    { text: "Eu estou aprendendo inglês", correct: true },
+                    { text: "Eu estou comendo uma maçã", correct: false },
+                    { text: "Eu estou lendo um livroe", correct: false },
+                    { text: "Eu estou correndo", correct: false },
+                ],
+            },
+            {
+                question: "4 - What is the translation of 'Árvore'?",
+                answers: [
+                    { text: "Flower", correct: false },
+                    { text: "Bad", correct: false },
+                    { text: "Tree", correct: true },
+                    { text: "Computer", correct: false },
+                ],
+            },
+            {
+                question: "5 - Translate 'Pássaro' to English.",
+                answers: [
+                    { text: "Lion", correct: false },
+                    { text: "Fish", correct: false },
+                    { text: "Bear", correct: false },
+                    { text: "Bird", correct: true },
+                ],
+            },
+            {
+                question: "6 - Translate 'Livro' to English.",
+                answers: [
+                    { text: "Pen", correct: false },
+                    { text: "Bok", correct: false },
+                    { text: "Book", correct: true },
+                    { text: "Dook", correct: false },
+                ],
+            },
+            {
+                question: "7 - How do you say 'Caderno' in English?",
+                answers: [
+                    { text: "Notbook", correct: false },
+                    { text: "Window", correct: false },
+                    { text: "Notebook", correct: true },
+                    { text: "Floor", correct: false },
+                ],
+            },
+            {
+                question: "8 - How do you say 'Janela' in English?",
+                answers: [
+                    { text: "Carpet", correct: false },
+                    { text: "Window", correct: true },
+                    { text: "Door", correct: false },
+                    { text: "Windowns", correct: false },
+                ],
+            },
+            {
+                question: "9 - What is the translation of 'Tapete'?",
+                answers: [
+                    { text: "Carpet", correct: true },
+                    { text: "Chair", correct: false },
+                    { text: "Dour", correct: false },
+                    { text: "Table", correct: false },
+                ],
+            },
+            {
+                question: "10 - How do you say 'Copo' in English",
+                answers: [
+                    { text: "Fork", correct: false },
+                    { text: "Spoon", correct: false },
+                    { text: "Glass", correct: true },
+                    { text: "Fork", correct: false },
+                ],
+            },
+            {
+                question: "11 - What is the translation of 'Prato'?",
+                answers: [
+                    { text: "Fork", correct: false },
+                    { text: "Knife", correct: false },
+                    { text: "Spoon", correct: false },
+                    { text: "Glass", correct: true },
+                ],
+            },
+            {
+                question: "12 - Translate 'Garfo' to English.",
+                answers: [
+                    { text: "Knife", correct: false },
+                    { text: "Fork", correct: true },
+                    { text: "Knifee", correct: false },
+                    { text: "Spoon", correct: false },
+                ],
+            },
+            {
+                question: "13 - What is the translation of 'Geladeira'?",
+                answers: [
+                    { text: "Refrigerator", correct: true },
+                    { text: "Freezer", correct: false },
+                    { text: "Microwave", correct: false },
+                    { text: "Dishwasher", correct: false },
+                ],
+            },
+            {
+                question: "14 - What is the translation of 'Lava-louças'?",
+                answers: [
+                    { text: "Dryer", correct: false },
+                    { text: "Sink", correct: false },
+                    { text: "Dishwasher", correct: true },
+                    { text: "Dryeer", correct: false },
+                ],
+            },
+            {
+                question: "15 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "16 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "17 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "18 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "19 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "20 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "21 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "22 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "23 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "24 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "25 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "26 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "27 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "28 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "29 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "30 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "31 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "32 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "33 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "34 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "35 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "36 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "37 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "38 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "39 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "40 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "41 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question:  "42 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            {
+                question: "43 -",
+                answers: [
+                    { text: "Good, thanks.", correct: true },
+                    { text: "Bad", correct: false },
+                    { text: "Table", correct: false },
+                    { text: "Dog", correct: false },
+                ],
+            },
+            
+            {
+                question: "44 -",
+                answers: [
+                    { text: "Dog", correct: false },
+                    { text: "Cat", correct: false },
+                    { text: "My name is John.", correct: true },
+                    { text: "Chair", correct: false },
+                ],
+                
+            },{
+                question: "45 -",
+                answers: [
+                    { text: "Dog", correct: false },
+                    { text: "Cat", correct: false },
+                    { text: "My name is John.", correct: true },
+                    { text: "Chair", correct: false },
+                ],
+            },{
+                question: "46 -",
+                answers: [
+                    { text: "Dog", correct: false },
+                    { text: "Cat", correct: false },
+                    { text: "My name is John.", correct: true },
+                    { text: "Chair", correct: false },
+                ],
+            }
+            ,{
+                question: "47 -",
+                answers: [
+                    { text: "Dog", correct: false },
+                    { text: "Cat", correct: false },
+                    { text: "My name is John.", correct: true },
+                    { text: "Chair", correct: false },
+                ],
+            },{
+                question: "48 -",
+                answers: [
+                    { text: "Dog", correct: false },
+                    { text: "Cat", correct: false },
+                    { text: "My name is John.", correct: true },
+                    { text: "Chair", correct: false },
+                ],
+            },{
+                question: "49 -",
+                answers: [
+                    { text: "Dog", correct: false },
+                    { text: "Cat", correct: false },
+                    { text: "My name is John.", correct: true },
+                    { text: "Chair", correct: false },
+                ],
+            },
+            {
+                question: "50 -",
+                answers: [
+                    { text: "London", correct: false },
+                    { text: "Berlin", correct: false },
+                    { text: "Paris", correct: true },
+                    { text: "Madrid", correct: false },
+                ],
+            },
+            // Adicione mais perguntas conforme necessário
+        ];
+
+        const startGameButton = document.querySelector(".start");
+        const startContainer = document.querySelector(".start-container");
+        const questionsContainer = document.querySelector(".questions-container");
+        const answersContainer = document.querySelector(".answers-container");
+        const questionText = document.querySelector(".question");
+        const messageContainer = document.querySelector(".message");
+        const resultsContainer = document.querySelector(".results-container");
+
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+
+        startGameButton.addEventListener("click", startGame);
+
+        function startGame() {
+            startContainer.classList.add("hide");
+            questionsContainer.classList.remove("hide");
+            displayNextQuestion();
+        }
+
+        function displayNextQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionText.textContent = currentQuestion.question;
+            const answers = currentQuestion.answers;
+            answersContainer.innerHTML = "";
+            answers.forEach(answer => {
+                const button = document.createElement("button");
+                button.classList.add("answer", "button");
+                button.innerText = answer.text;
+                button.addEventListener("click", () => {
+                    const answerButtons = document.querySelectorAll('.answer');
+            if (answer.correct) {
+                button.classList.add("correct");
+                correctAnswers++;
+            } else {
+                button.classList.add("incorrect");
+                answerButtons.forEach(btn => {
+                    if (btn.innerText === answer.text) {
+                        btn.classList.add("incorrect");
+                    } else if (btn.innerText !== answer.text && questions[currentQuestionIndex].answers.find(a => a.text === btn.innerText).correct) {
+                        btn.classList.add("correct");
+                    }
+                });
+            }
+            setTimeout(() => {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    displayNextQuestion();
+                } else {
+                    displayResults();
+                }
+            }, 1000);
+            answerButtons.forEach(btn => {
+                btn.disabled = true;
+            });
+        });
+        answersContainer.appendChild(button);
+    });
+}
+
+        function displayResults() {
+            questionsContainer.classList.add("hide");
+            resultsContainer.classList.remove("hide");
+            messageContainer.textContent = "Você acertou " + correctAnswers + " de " + questions.length + " perguntas!";
+        }
+    </script>
+</body>
+</html>
